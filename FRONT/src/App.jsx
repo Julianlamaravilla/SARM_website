@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLanguage } from './context/LanguageContext'
 import { translations } from './translations'
 import Header from './components/Header'
@@ -9,6 +9,19 @@ import './App.css'
 function App() {
   const { language } = useLanguage()
   const t = translations[language]
+  const [expandedCards, setExpandedCards] = useState({
+    cuidadosAlimenticios: false,
+    buenosHabitos: false,
+    alimentacionEjercicio: false,
+    diaADia: false,
+  })
+
+  const toggleCard = (cardId) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [cardId]: !prev[cardId],
+    }))
+  }
 
   return (
     <div className="app">
@@ -34,7 +47,7 @@ function App() {
           </div>
           <div className="services-grid">
             {/* Caja 1: Cuidados Alimenticios */}
-            <div className="service-card" style={{ backgroundColor: '#A3D437' }}>
+            <div className={`service-card ${expandedCards.cuidadosAlimenticios ? 'expanded' : ''}`} style={{ backgroundColor: '#A3D437' }}>
               <div className="service-card-image">
                 <img 
                   src="/material_visual/imagenes_originales/plato_de_comida.jpg" 
@@ -43,16 +56,26 @@ function App() {
                   loading="lazy"
                 />
               </div>
-              <div className="service-card-content">
+              <div className={`service-card-content ${expandedCards.cuidadosAlimenticios ? 'expanded' : ''}`}>
                 <h3 className="service-card-title">{t.sections.servicios.cuidadosAlimenticios.title}</h3>
-                <p className="service-card-text">{t.sections.servicios.cuidadosAlimenticios.text1}</p>
-                <p className="service-card-text">{t.sections.servicios.cuidadosAlimenticios.text2}</p>
-                <p className="service-card-highlight">{t.sections.servicios.cuidadosAlimenticios.highlight}</p>
+                <div className={`service-card-text-wrapper ${expandedCards.cuidadosAlimenticios ? 'expanded' : ''}`}>
+                  <p className="service-card-text">{t.sections.servicios.cuidadosAlimenticios.text1}</p>
+                  <p className="service-card-text">{t.sections.servicios.cuidadosAlimenticios.text2}</p>
+                  <p className="service-card-highlight">{t.sections.servicios.cuidadosAlimenticios.highlight}</p>
+                </div>
+                <button
+                  type="button"
+                  className="service-card-toggle"
+                  onClick={() => toggleCard('cuidadosAlimenticios')}
+                  aria-expanded={expandedCards.cuidadosAlimenticios}
+                >
+                  {expandedCards.cuidadosAlimenticios ? t.sections.servicios.seeLess : t.sections.servicios.seeMore}
+                </button>
               </div>
             </div>
 
             {/* Caja 2: Buenos Hábitos */}
-            <div className="service-card" style={{ backgroundColor: '#F5A623' }}>
+            <div className={`service-card ${expandedCards.buenosHabitos ? 'expanded' : ''}`} style={{ backgroundColor: '#F5A623' }}>
               <div className="service-card-image">
                 <img 
                   src="/material_visual/imagenes_originales/cerebro_de_frutas.png" 
@@ -61,15 +84,25 @@ function App() {
                   loading="lazy"
                 />
               </div>
-              <div className="service-card-content">
+              <div className={`service-card-content ${expandedCards.buenosHabitos ? 'expanded' : ''}`}>
                 <h3 className="service-card-title">{t.sections.servicios.buenosHabitos.title}</h3>
-                <p className="service-card-text">{t.sections.servicios.buenosHabitos.text1}</p>
-                <p className="service-card-highlight">{t.sections.servicios.buenosHabitos.highlight}</p>
+                <div className={`service-card-text-wrapper ${expandedCards.buenosHabitos ? 'expanded' : ''}`}>
+                  <p className="service-card-text">{t.sections.servicios.buenosHabitos.text1}</p>
+                  <p className="service-card-highlight">{t.sections.servicios.buenosHabitos.highlight}</p>
+                </div>
+                <button
+                  type="button"
+                  className="service-card-toggle"
+                  onClick={() => toggleCard('buenosHabitos')}
+                  aria-expanded={expandedCards.buenosHabitos}
+                >
+                  {expandedCards.buenosHabitos ? t.sections.servicios.seeLess : t.sections.servicios.seeMore}
+                </button>
               </div>
             </div>
 
             {/* Caja 3: Alimentación + Ejercicio */}
-            <div className="service-card" style={{ backgroundColor: '#4C8F2F' }}>
+            <div className={`service-card ${expandedCards.alimentacionEjercicio ? 'expanded' : ''}`} style={{ backgroundColor: '#4C8F2F' }}>
               <div className="service-card-image">
                 <img 
                   src="/material_visual/imagenes_originales/gimnasio_4.jpg" 
@@ -78,15 +111,25 @@ function App() {
                   loading="lazy"
                 />
               </div>
-              <div className="service-card-content">
+              <div className={`service-card-content ${expandedCards.alimentacionEjercicio ? 'expanded' : ''}`}>
                 <h3 className="service-card-title">{t.sections.servicios.alimentacionEjercicio.title}</h3>
-                <p className="service-card-text">{t.sections.servicios.alimentacionEjercicio.text1}</p>
-                <p className="service-card-text">{t.sections.servicios.alimentacionEjercicio.text2}</p>
+                <div className={`service-card-text-wrapper ${expandedCards.alimentacionEjercicio ? 'expanded' : ''}`}>
+                  <p className="service-card-text">{t.sections.servicios.alimentacionEjercicio.text1}</p>
+                  <p className="service-card-text">{t.sections.servicios.alimentacionEjercicio.text2}</p>
+                </div>
+                <button
+                  type="button"
+                  className="service-card-toggle"
+                  onClick={() => toggleCard('alimentacionEjercicio')}
+                  aria-expanded={expandedCards.alimentacionEjercicio}
+                >
+                  {expandedCards.alimentacionEjercicio ? t.sections.servicios.seeLess : t.sections.servicios.seeMore}
+                </button>
               </div>
             </div>
 
             {/* Caja 4: Día a Día */}
-            <div className="service-card" style={{ backgroundColor: '#FFD25D' }}>
+            <div className={`service-card ${expandedCards.diaADia ? 'expanded' : ''}`} style={{ backgroundColor: '#FFD25D' }}>
               <div className="service-card-image">
                 <img 
                   src="/material_visual/imagenes_originales/mesa_con_comida.jpg.png" 
@@ -95,10 +138,20 @@ function App() {
                   loading="lazy"
                 />
               </div>
-              <div className="service-card-content">
+              <div className={`service-card-content ${expandedCards.diaADia ? 'expanded' : ''}`}>
                 <h3 className="service-card-title">{t.sections.servicios.diaADia.title}</h3>
-                <p className="service-card-text">{t.sections.servicios.diaADia.text1}</p>
-                <p className="service-card-text">{t.sections.servicios.diaADia.text2}</p>
+                <div className={`service-card-text-wrapper ${expandedCards.diaADia ? 'expanded' : ''}`}>
+                  <p className="service-card-text">{t.sections.servicios.diaADia.text1}</p>
+                  <p className="service-card-text">{t.sections.servicios.diaADia.text2}</p>
+                </div>
+                <button
+                  type="button"
+                  className="service-card-toggle"
+                  onClick={() => toggleCard('diaADia')}
+                  aria-expanded={expandedCards.diaADia}
+                >
+                  {expandedCards.diaADia ? t.sections.servicios.seeLess : t.sections.servicios.seeMore}
+                </button>
               </div>
             </div>
           </div>

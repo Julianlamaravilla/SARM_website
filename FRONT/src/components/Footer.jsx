@@ -9,20 +9,14 @@ function Footer() {
     es: {
       tagline: 'Tu partner en salud y bienestar.',
       quickLinks: 'Enlaces Rápidos',
-      legal: 'Legal',
       contactUs: 'Contacto',
-      privacy: 'Política de Privacidad',
-      terms: 'Términos de Servicio',
-      copyright: '©2024 SARM. Todos los derechos reservados.'
+      copyright: '©2025 SARM. Todos los derechos reservados.'
     },
     en: {
       tagline: 'Your partner in health and wellness.',
       quickLinks: 'Quick Links',
-      legal: 'Legal',
       contactUs: 'Contact Us',
-      privacy: 'Privacy Policy',
-      terms: 'Terms of Service',
-      copyright: '©2024 SARM. All rights reserved.'
+      copyright: '©2025 SARM. All rights reserved.'
     }
   }
 

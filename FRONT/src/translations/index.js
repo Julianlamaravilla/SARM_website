@@ -14,6 +14,8 @@ export const translations = {
       servicios: {
         title: 'Encuentra Tu Camino',
         subtitle: 'Sea cual sea tu objetivo, tenemos un programa diseñado para ayudarte a alcanzarlo. Descubre tu camino perfecto hacia una vida más saludable.',
+        seeMore: 'Ver más',
+        seeLess: 'Ver menos',
         cuidadosAlimenticios: {
           title: 'Cuidados Alimenticios',
           text1: 'La alimentación es la base de todo bienestar. Cada decisión que tomamos frente al plato influye directamente en nuestro nivel de energía, en nuestra concentración, en nuestro rendimiento físico y hasta en nuestro estado emocional. Este e-book te muestra cómo elegir alimentos que nutran tu cuerpo de verdad, cómo organizar tus comidas de manera equilibrada y qué cambios simples pueden transformar tu salud desde la primera semana.',
@@ -61,6 +63,8 @@ export const translations = {
       servicios: {
         title: 'Find Your Fit',
         subtitle: 'Whatever your goals, we have a program designed to help you reach them. Discover your perfect path to a healthier you.',
+        seeMore: 'Read more',
+        seeLess: 'Show less',
         cuidadosAlimenticios: {
           title: 'Nutritional Care',
           text1: 'Nutrition is the foundation of all wellness. Every decision we make at the plate directly influences our energy level, our concentration, our physical performance, and even our emotional state. This e-book shows you how to choose foods that truly nourish your body, how to organize your meals in a balanced way, and what simple changes can transform your health from the first week.',
